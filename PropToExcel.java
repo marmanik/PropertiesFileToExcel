@@ -33,7 +33,7 @@ public class PropToExcel {
     	PropToExcel readWriteXlsDemo = new PropToExcel();
  
         // Call method readProperties() it take path to properties file
-        readWriteXlsDemo.readProperties("C:\\dev\\workspace\\java\\mbc_loyalty\\trunk\\promo\\mbc.promo.webApp\\src\\main\\resources\\messages\\labels_ar.properties");
+        readWriteXlsDemo.readProperties("labels_ar.properties");
  
         // Call method writeToExcel() it will take path to excel file
         readWriteXlsDemo.writeToExcel("test_ar.xls");
