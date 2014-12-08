@@ -48,10 +48,8 @@ public class PropToExcel {
         File propertiesFile = new File(propertiesFilePath);
  
         // If properties file is a file do below stuff
-        if(propertiesFile.isFile())
-        {
-            try
-            {
+        if(propertiesFile.isFile()){
+            try{
                 // Create a FileInputStream for loading the properties file
                 FileInputStream fisProp = new FileInputStream(propertiesFile);
         
@@ -71,8 +69,7 @@ public class PropToExcel {
  
                 
                 // Looping over the elements of Enumeration
-                while(keysEnum.hasMoreElements())
-                {
+                while(keysEnum.hasMoreElements()){
                     // Extracting the key and respective values from it.
                     String propKey = (String)keysEnum.nextElement();
                     String propValue = (String)properties.getProperty(propKey);
@@ -87,13 +84,10 @@ public class PropToExcel {
                 System.out.println("Properties Map ... \n" +  propMap);
                 fisProp.close();
  
-            }
-            catch(FileNotFoundException e)
-            {                     
+            }catch(FileNotFoundException e){                     
                 e.printStackTrace();
             }
-            catch(IOException e)
-            {                  
+            catch(IOException e){                  
                 e.printStackTrace();
             }
  
@@ -145,8 +139,7 @@ public class PropToExcel {
         Iterator< String > iterator = propMap.keySet().iterator();
  
         // Looping across the elements of Iterator
-        while(iterator.hasNext())
-        {         
+        while(iterator.hasNext()) {         
             // Creating a new row from the worksheet
             // at the last used row + 1 location
             HSSFRow rowOne = worksheet.createRow(worksheet.getLastRowNum()+1);
