@@ -1,0 +1,1 @@
+This java class is copying every .properties files in a excel file.
