@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Properties;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -72,7 +71,7 @@ public class PropToExcel {
                 while(keysEnum.hasMoreElements()){
                     // Extracting the key and respective values from it.
                     String propKey = (String)keysEnum.nextElement();
-                    String propValue = (String)properties.getProperty(propKey);
+                    String propValue = properties.getProperty(propKey);
  
                     // After extracting the key and value from the properties file
                     // we will store the values in a HashMap.
@@ -119,7 +118,7 @@ public class PropToExcel {
         cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
  
         // Create a HSSFCell from the row object created above
-        HSSFCell cell1 = row.createCell((short) 0);
+        HSSFCell cell1 = row.createCell(0);
  
         // Setting the value of the cell as the keys by calling
         // setCellValue() method over the HSSFCell
@@ -128,7 +127,7 @@ public class PropToExcel {
         // Giving it the style created above.
         cell1.setCellStyle(cellStyle);
  
-        HSSFCell cell2 = row.createCell((short) 1);
+        HSSFCell cell2 = row.createCell(1);
         cell2.setCellValue(new HSSFRichTextString("Values"));                
         cell2.setCellStyle(cellStyle);
  
@@ -136,31 +135,31 @@ public class PropToExcel {
         // it is converted to a HashSet by calling keySet() method
         // which will return with Set.
         // Iterator object is pointed to keys of Set
-        Iterator< String > iterator = propMap.keySet().iterator();
- 
+
         // Looping across the elements of Iterator
-        while(iterator.hasNext()) {         
+        for (String s : propMap.keySet()) {
             // Creating a new row from the worksheet
             // at the last used row + 1 location
-            HSSFRow rowOne = worksheet.createRow(worksheet.getLastRowNum()+1);
- 
+            HSSFRow rowOne = worksheet.createRow(worksheet.getLastRowNum() + 1);
+
             // Creating two cells in the row at 0 and 1 position.
-            HSSFCell cellZero = rowOne.createCell((short) 0);
-            HSSFCell cellOne = rowOne.createCell((short) 1);
- 
+            HSSFCell cellZero = rowOne.createCell(0);
+            HSSFCell cellOne = rowOne.createCell(1);
+
             // extracting key and value from the map and set
-            String key = (String) iterator.next();
-            String value = (String) propMap.get(key);
- 
+            String key;
+            key = s;
+            String value = propMap.get(key);
+
             // setting the extracted keys and values in the cells
             cellZero.setCellValue(new HSSFRichTextString(key));
             cellOne.setCellValue(new HSSFRichTextString(value));
- 
+
         }         
  
         try{
  
-            FileOutputStream fosExcel =null;        
+            FileOutputStream fosExcel;
  
             // Creating a xls File
             File fileExcel = new File(excelPath);               
